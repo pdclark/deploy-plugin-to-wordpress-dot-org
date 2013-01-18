@@ -2,10 +2,10 @@
 
 Edit these lines:
 
-`# User config
-PLUGINSLUG="example-plugin"   # Slug on wordpress.org (from the plugin URL)
-MAINFILE="example-plugin.php" # Name of main php file in the WordPress plugin
-SVNUSER=""                    # SVN username on wordpress.org`
+    # User config
+    PLUGINSLUG="example-plugin"   # Slug on wordpress.org (from the plugin URL)
+    MAINFILE="example-plugin.php" # Name of main php file in the WordPress plugin
+    SVNUSER="username"            # SVN username on wordpress.org
 
 # Usage
 
@@ -17,12 +17,12 @@ SVNUSER=""                    # SVN username on wordpress.org`
 
 If you have files in your Git repository that you would not like to commit to the WordPress repo, find and edit these lines:
 
-`# Add any large source files or other things to ignore here
-echo "Ignoring github specific files and deployment script"
-svn propset svn:ignore "deploy.sh
-README.md
-.git
-.gitignore" "$SVNPATH/trunk/"`
+    # Add any large source files or other things to ignore here
+    echo "Ignoring github specific files and deployment script"
+    svn propset svn:ignore "deploy.sh
+    README.md
+    .git
+    .gitignore" "$SVNPATH/trunk/"
 
 # History
 

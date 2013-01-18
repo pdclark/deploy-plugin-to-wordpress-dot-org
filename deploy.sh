@@ -5,7 +5,7 @@
 # User config
 PLUGINSLUG="example-plugin"   # Slug on wordpress.org (from the plugin URL)
 MAINFILE="example-plugin.php" # Name of main php file in the WordPress plugin
-SVNUSER=""                    # SVN username on wordpress.org
+SVNUSER="username"            # SVN username on wordpress.org
 
 # git config
 CURRENTDIR=`pwd`
