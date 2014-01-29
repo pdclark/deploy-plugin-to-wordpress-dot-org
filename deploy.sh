@@ -41,12 +41,12 @@ echo -e "Enter a commit message for this new version: \c"
 read COMMITMSG
 # git commit -am "$COMMITMSG"
 
-# echo "Tagging new version in git"
-# git tag -a "$NEWVERSION1" -m "Tagging version $NEWVERSION1"
+echo "Tagging new version in git"
+git tag -a "$NEWVERSION1" -m "Tagging version $NEWVERSION1"
 
-# echo "Pushing latest commit to origin, with tags"
-# git push origin master
-# git push origin master --tags
+echo "Pushing latest commit to origin, with tags"
+git push origin master
+git push origin master --tags
 
 echo 
 echo "Creating local copy of SVN repo ..."
