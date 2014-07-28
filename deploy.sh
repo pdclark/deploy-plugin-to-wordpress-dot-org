@@ -8,7 +8,7 @@
 PLUGINSLUG=${PWD##*/} # returns basename of current directory
 CURRENTDIR=`pwd`
 MAINFILE="styles.php" # this should be the name of your main php file in the wordpress plugin
-SVNUSER="pdclark" # your svn username
+SVNUSER="pdclark" # your svn username (case sensitive)
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
