@@ -2,13 +2,13 @@
 # Source: https://raw.github.com/thenbrent/multisite-user-management/master/deploy.sh
 # http://thereforei.am/2011/04/21/git-to-svn-automated-wordpress-plugin-deployment/
 # A modification of Dean Clatworthy's deploy script as found here: https://github.com/deanc/wordpress-plugin-git-svn
-# The difference is that this script lives in the plugin's git repo & doesn't require an existing SVN repo.
+# The difference is that this script lives outside the plugin's git repo and can be used to deploy multiple plugins
 
 # main config
 PLUGINSLUG=${PWD##*/} # returns basename of current directory
 CURRENTDIR=`pwd`
-MAINFILE="styles.php" # this should be the name of your main php file in the wordpress plugin
-SVNUSER="pdclark" # your svn username (case sensitive)
+MAINFILE=$1 # Main file passed on call into the deploy script
+SVNUSER="ninnypants" # your svn username (case sensitive)
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
@@ -19,11 +19,11 @@ SVNURL="http://plugins.svn.wordpress.org/$PLUGINSLUG" # Remote SVN repo on wordp
 
 # Let's begin...
 echo ".........................................."
-echo 
+echo
 echo "Preparing to deploy WordPress plugin"
-echo 
+echo
 echo ".........................................."
-echo 
+echo
 
 # Check version in readme.txt is the same as plugin file
 NEWVERSION1=`grep "^Stable tag" "$GITPATH/readme.txt" | awk -F' ' '{print $3}' | sed 's/[[:space:]]//g'`
@@ -47,7 +47,7 @@ echo "Pushing latest commit to origin, with tags"
 git push origin master
 git push origin master --tags
 
-echo 
+echo
 echo "Creating local copy of SVN repo ..."
 svn co $SVNURL $SVNPATH
 
