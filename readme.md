@@ -2,16 +2,14 @@
 
 Edit these lines:
 
-    # User config
-    PLUGINSLUG="example-plugin"   # Slug on wordpress.org (from the plugin URL)
-    MAINFILE="example-plugin.php" # Name of main php file in the WordPress plugin
     SVNUSER="username"            # SVN username on wordpress.org
 
 # Usage
 
-* Place deploy.sh at the top of your plugin's Git directory.
-* Make it executable with `chmod 755 deploy.sh`.
-* Run `./deploy.sh` to deploy master to wordpress.org.
+* Download `deploy.sh` and place it somewhere it wont be deleted.
+* Make it executable with `chmod +x deploy.sh`.
+* Add an alias in `.profile` for bash or `.zshrc` for zsh `alias wpdeploy='~/deploy-plugin-to-wordpress-dot-org/deploy.sh'
+* cd into plugin directory and run `wpdepoly plugin-main-file.php`
 
 # Ignoring Files
 
