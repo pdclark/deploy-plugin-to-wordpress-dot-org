@@ -13,6 +13,16 @@ Edit these lines:
 * Make it executable with `chmod 755 deploy.sh`.
 * Run `./deploy.sh` to deploy master to wordpress.org.
 
+## Readme Markdown
+
+If you choose to use a readme.md file for Github, instead of having two files just use the readme.md with the proper heading usage, the script will automatically convert:
+
+* "# Plugin title" becomes "=== Plugin title ==="
+* "## Section title" becomes "== Section title =="
+* "### Sub heading" becomes "= Sub heading ="
+
+Outside of the different headings, everything else in the file must match the syntax that WordPress expects. The single readme file can work for both places.
+
 # Ignoring Files
 
 If you have files in your Git repository that you would not like to commit to the WordPress repo, find and edit these lines:
