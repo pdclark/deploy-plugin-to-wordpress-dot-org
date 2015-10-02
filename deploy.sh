@@ -26,7 +26,11 @@ echo ".........................................."
 echo 
 
 # Check version in readme.txt is the same as plugin file
-NEWVERSION1=`grep "^Stable tag" "$GITPATH/readme.txt" | awk -F' ' '{print $3}' | sed 's/[[:space:]]//g'`
+if [ -f readme.md ]; then
+	NEWVERSION1=`grep "^Stable tag" "$GITPATH/readme.md" | awk -F' ' '{print $3}' | sed 's/[[:space:]]//g'`
+else
+	NEWVERSION1=`grep "^Stable tag" "$GITPATH/readme.txt" | awk -F' ' '{print $3}' | sed 's/[[:space:]]//g'`
+fi
 echo "readme version: $NEWVERSION1"
 NEWVERSION2=`grep "^Version" "$GITPATH/$MAINFILE" | awk -F' ' '{print $2}' | sed 's/[[:space:]]//g'`
 echo "$MAINFILE version: $NEWVERSION2"
@@ -62,6 +66,13 @@ README.md
 
 echo "Changing directory to SVN and committing to trunk"
 cd $SVNPATH/trunk/
+
+# Transform the readme
+if [ -f readme.md ]; then
+	mv readme.md readme.txt
+	sed -i '' -e 's/^# \(.*\)$/=== \1 ===/' -e 's/^## \(.*\)$/== \1 ==/' -e 's/^### \(.*\)$/= \1 =/' readme.txt
+fi
+
 # Add all new files that are not set to be ignored
 svn status | grep -v "^.[ \t]*\..*" | grep "^?" | awk '{print $2}' | xargs svn add
 svn commit --username=$SVNUSER -m "$COMMITMSG"
